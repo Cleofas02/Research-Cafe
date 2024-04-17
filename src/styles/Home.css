@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: "Open Sans", serif;
+}
+
+.wrapper {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* navbar */
+.searchTerm {
+  width: 400px;
+  height: 44px;
+  padding: 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+.searchButton {
+  height: 44px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+}
+
+.navbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+
+.navbox .leftside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbox .leftside img {
+  width: 100px;
+  height: 100px;
+  margin-right: 50px;
+}
+
+.navbox .rightside {
+  font-size: 12px;
+  font-weight: 600;
+  position: relative;
+  margin-top: 8px;
+}
+
+.navbox .rightside span {
+  margin-right: 10px;
+}
+
+.navbox .rightside span .navlink {
+  text-decoration: none;
+  color: #000;
+}
