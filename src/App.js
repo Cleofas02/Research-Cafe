@@ -6,6 +6,8 @@ import { ProductsContextProvider } from "./global/ProductsContext";
 import Addpdft from "./components/Addpdft";
 import Homepage from "./components/Homepage";
 import UploadPdft from "./components/UploadPdft";
+import { Auth } from "./components/Auth";
+
 
 export class App extends Component {
   render() {
@@ -16,6 +18,7 @@ export class App extends Component {
             <Route exact path='/' Component={Homepage} />
             <Route exact path='/home' Component={Home} />
             <Route exact path='/upload' Component={UploadPdft} />
+            <Route exact path='/Auth' Component={Auth} />
             <Route path='addresearch' Component={AddResearch} />
             <Route path='/pdfupload' Component={Addpdft}/>
           </Routes>

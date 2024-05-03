@@ -9,20 +9,20 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 
 function Addpdft() {
- const [files, setFiles] = useState([]);
- const [percent, setPercent] = useState(0);
- const [pdfData, setPdfData] = useState([]); 
- const [metadataFields, setMetadataFields] = useState({
+const [files, setFiles] = useState([]);
+const [percent, setPercent] = useState(0);
+const [pdfData, setPdfData] = useState([]); 
+const [metadataFields, setMetadataFields] = useState({
     researchTitle: "",
     authors: "",
     strands: "",
     publicationDate: "",
- });
- const [searchQuery, setSearchQuery] = useState(""); 
+});
+const [searchQuery, setSearchQuery] = useState(""); 
 
- const fileInputRef = useRef(); 
+const fileInputRef = useRef(); 
 
- const checkForChanges = useCallback(async () => {
+const checkForChanges = useCallback(async () => {
     const storageRef = ref(storage, '/files');
     const res = await listAll(storageRef);
     const currentFiles = await Promise.all(res.items.map(async (item) => {
@@ -52,9 +52,9 @@ function Addpdft() {
 
     setPdfData(updatedPdfData);
     localStorage.setItem("pdfData", JSON.stringify(updatedPdfData));
- }, [pdfData]); 
+}, [pdfData]); 
 
- useEffect(() => {
+useEffect(() => {
     pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
     const fetchPdfData = async () => {
       const pdfsCollection = collection(db, "pdfs");
@@ -68,20 +68,20 @@ function Addpdft() {
       checkForChanges();
     }, 5000);
     return () => clearInterval(intervalId);
- }, [checkForChanges]);
+}, [checkForChanges]);
 
- function handleChange(event) {
+function handleChange(event) {
     setFiles(Array.from(event.target.files));
- }
+}
 
- function handleMetadataChange(event) {
+function handleMetadataChange(event) {
     setMetadataFields({
       ...metadataFields,
       [event.target.name]: event.target.value,
     });
- }
+}
 
- const handleUpload = () => {
+const handleUpload = () => {
     if (files.length === 0) {
       alert("Please select files to upload!");
       return;
@@ -110,7 +110,7 @@ function Addpdft() {
                 strands: metadataFields.strands,
                 publicationDate: metadataFields.publicationDate,
                 url: url,
-               });
+              });
               resolve({ url, name: file.name, author: file.authors, strand: file.strands, publicationDate: file.publicationDate, metadata: metadataFields });
             });
           }
@@ -128,19 +128,19 @@ function Addpdft() {
         console.error("Upload failed:", error);
         alert("Upload failed. Please try again.");
       });
- };
+};
 
- const handleReset = () => {
+const handleReset = () => {
     setFiles([]);
     setPercent(0);
     setMetadataFields({
-       researchTitle: "",
-       authors: "",
-       strands: "",
-       publicationDate: "",
+      researchTitle: "",
+      authors: "",
+      strands: "",
+      publicationDate: "",
     });
     if (fileInputRef.current) {
-       fileInputRef.current.value = null;
+      fileInputRef.current.value = null;
     }
  };
 
@@ -152,17 +152,19 @@ function Addpdft() {
   const authors = pdf.authors ? pdf.authors.toLowerCase() : '';
   const strands = pdf.strands ? pdf.strands.toLowerCase() : '';
   const publicationDate = pdf.publicationDate ? pdf.publicationDate.toLowerCase() : '';
- 
-  return (
-     name.includes(query) ||
-     researchTitle.includes(query) ||
-     authors.includes(query) ||
-     strands.includes(query) ||
-     publicationDate.includes(query)
-  );
- })
+  const researchMethod = pdf.researchMethod ? pdf.researchMethod.toLowerCase() : '';
 
- return (
+  return (
+    name.includes(query) ||
+    researchTitle.includes(query) ||
+    authors.includes(query) ||
+    strands.includes(query) ||
+    publicationDate.includes(query) ||
+    researchMethod.includes(query)
+  );
+})
+
+return (
     <>
 
 
@@ -196,7 +198,7 @@ function Addpdft() {
 
 
 <div className="max-h-96 overflow-y-auto mt-5"> {/* Adjust the maxHeight as needed */}
- <table className="w-full border-collapse border-white">
+<table className="w-full border-collapse border-white">
     <thead>
       <tr className="bg-blue-500 text-white">
         <th className="px-4 py-2 border border-white">RESEARCH METHOD</th>
@@ -210,7 +212,7 @@ function Addpdft() {
     <tbody>
       {filteredPdfData.map((pdf, index) => (
         <tr key={index} className={`${index % 2 === 0 ? 'bg-white' : 'bg-blue-100'}`}>
-          <td className="px-4 py-2 border border-white">{pdf.researchMethod}</td> {/* Use researchMethod here */}
+          <td className="px-4 py-2 border border-white">{pdf.researchMethod}</td> 
           <td className="px-4 py-2 border border-white">{pdf.researchTitle}</td>
           <td className="px-4 py-2 border border-white">{pdf.authors}</td>
           <td className="px-4 py-2 border border-white">{pdf.strands}</td>
@@ -221,7 +223,7 @@ function Addpdft() {
         </tr>
       ))}
     </tbody>
- </table>
+</table>
 </div>
 
 

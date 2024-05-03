@@ -6,6 +6,18 @@ import { collection, addDoc } from "firebase/firestore";
 import { Navbar } from './Navbar';
 
 const UploadPdft = () => {
+
+
+  
+
+
+
+
+
+
+
+
+
  const [files, setFiles] = useState([]);
  const [metadataFields, setMetadataFields] = useState({
      researchMethod: "",
@@ -96,6 +108,15 @@ const UploadPdft = () => {
       alert("All files uploaded successfully!");
     }
  }, [pdfData]);
+
+
+
+
+
+
+
+
+ 
 
  return (
 

@@ -17,7 +17,7 @@ import school from '../images/school.png'
                     <h3 className='tracking-widest font-extrabold text-5xl text-blue-400'>Research Development Center (Research Cafe)</h3><br/>  
                     <p  className='tracking-widest font-bold  text-2xl text-white'>Card Catalogue</p><br/><br/>
                     <div>
-                        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-5 text-lg'><Link to="/upload">Upload</Link></button> 
+                        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-5 text-lg'><Link to="/auth">Upload</Link></button> 
                         <button className='bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded  text-lg'><Link to="/home">Get Started</Link></button> 
                     </div>
                 </div>
