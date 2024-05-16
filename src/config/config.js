@@ -49,3 +49,4 @@ const storage = firebase.storage();
 const database = firebase.database(); // Initialize the Realtime Database
 
 export { auth, db, storage, database }; // Export the database instance
+

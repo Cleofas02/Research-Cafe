@@ -16,6 +16,7 @@ const [metadataFields, setMetadataFields] = useState({
     researchTitle: "",
     authors: "",
     strands: "",
+    citation: "",
     publicationDate: "",
 });
 const [searchQuery, setSearchQuery] = useState(""); 
@@ -31,6 +32,7 @@ const checkForChanges = useCallback(async () => {
         name: item.name,
         author: item.authors, 
         strand: item.strands, 
+        citation: item.citation, 
         publicationDate: item.publicationDate, 
         url: url,
       };
@@ -108,10 +110,11 @@ const handleUpload = () => {
                 researchTitle: metadataFields.researchTitle,
                 authors: metadataFields.authors,
                 strands: metadataFields.strands,
+                citation: metadataFields.citation,
                 publicationDate: metadataFields.publicationDate,
                 url: url,
               });
-              resolve({ url, name: file.name, author: file.authors, strand: file.strands, publicationDate: file.publicationDate, metadata: metadataFields });
+              resolve({ url, name: file.name, author: file.authors, citation: metadataFields.citation, strand: file.strands, publicationDate: file.publicationDate, metadata: metadataFields });
             });
           }
         );
@@ -137,6 +140,7 @@ const handleReset = () => {
       researchTitle: "",
       authors: "",
       strands: "",
+      citation: "",
       publicationDate: "",
     });
     if (fileInputRef.current) {
@@ -151,6 +155,7 @@ const handleReset = () => {
   const researchTitle = pdf.researchTitle ? pdf.researchTitle.toLowerCase() : '';
   const authors = pdf.authors ? pdf.authors.toLowerCase() : '';
   const strands = pdf.strands ? pdf.strands.toLowerCase() : '';
+  const citation = pdf.citation ? pdf.citation.toLowerCase() : '';
   const publicationDate = pdf.publicationDate ? pdf.publicationDate.toLowerCase() : '';
   const researchMethod = pdf.researchMethod ? pdf.researchMethod.toLowerCase() : '';
 
@@ -158,6 +163,7 @@ const handleReset = () => {
     name.includes(query) ||
     researchTitle.includes(query) ||
     authors.includes(query) ||
+    citation.includes(citation) ||
     strands.includes(query) ||
     publicationDate.includes(query) ||
     researchMethod.includes(query)
@@ -204,6 +210,7 @@ return (
         <th className="px-4 py-2 border border-white">RESEARCH METHOD</th>
         <th className="px-4 py-2 border border-white">RESEARCH TITLE</th>
         <th className="px-4 py-2 border border-white">AUTHORS</th>
+        <th className="px-4 py-2 border border-white">CITATION</th>
         <th className="px-4 py-2 border border-white">AREA/SPECIALIZATION</th>
         <th className="px-4 py-2 border border-white">PUBLICATION</th>
         <th className="px-4 py-2 border border-white">VIEW</th>
@@ -215,6 +222,7 @@ return (
           <td className="px-4 py-2 border border-white">{pdf.researchMethod}</td> 
           <td className="px-4 py-2 border border-white">{pdf.researchTitle}</td>
           <td className="px-4 py-2 border border-white">{pdf.authors}</td>
+          <td className="px-4 py-2 border border-white">{pdf.citation}</td>
           <td className="px-4 py-2 border border-white">{pdf.strands}</td>
           <td className="px-4 py-2 border border-white">{pdf.publicationDate}</td>
           <td className="px-4 py-2 border border-white">

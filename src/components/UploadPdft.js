@@ -24,6 +24,7 @@ const UploadPdft = () => {
      researchTitle: "",
     authors: "",
     strands: "",
+    citation: "",
     publicationDate: "",
  });
  const [percent, setPercent] = useState(0);
@@ -48,6 +49,7 @@ const UploadPdft = () => {
       researchTitle: "",
       authors: "",
       strands: "",
+      citation: "",
       publicationDate: "",
     });
     setPercent(0);
@@ -82,10 +84,11 @@ const UploadPdft = () => {
                 researchTitle: metadataFields.researchTitle,
                 authors: metadataFields.authors,
                 strands: metadataFields.strands,
+                citation: metadataFields.citation,
                 publicationDate: metadataFields.publicationDate,
                 url: url,
               });
-              resolve({ url, name: file.name, author: metadataFields.authors, strand: metadataFields.strands, publicationDate: metadataFields.publicationDate, metadata: metadataFields });
+              resolve({ url, name: file.name, author: metadataFields.authors, citation: metadataFields.citation,  strand: metadataFields.strands, publicationDate: metadataFields.publicationDate, metadata: metadataFields });
             });
           }
         );
@@ -111,14 +114,7 @@ const UploadPdft = () => {
 
 
 
-
-
-
-
-
- 
-
- return (
+return (
 
 
     <>
@@ -146,18 +142,43 @@ const UploadPdft = () => {
     <input type="text" name="authors" value={metadataFields.authors} onChange={handleMetadataChange} className="border border-solid border-slate-900 mt-1 block w-full p-2 rounded-md border-black border-solid focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
  </div>
  <div className="flex flex-col">
+    <label htmlFor="authors" className="text-sm font-medium text-gray-700">Citation:</label>
+    <input type="text" name="citation" value={metadataFields.citation} onChange={handleMetadataChange} className="border border-solid border-slate-900 mt-1 block w-full p-2 rounded-md border-black border-solid focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+ </div>
+ <div className="flex flex-col">
     <label htmlFor="strands" className="text-sm font-medium text-gray-700">Area/Specialization:</label>
     <select name="strands" value={metadataFields.strands} onChange={handleMetadataChange} className="border border-solid border-slate-900 mt-1 block w-full py-2 px-3 border-black border-solid bg-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
       <option value="">--Select Area/Specialization--</option>
-      <option value="Math">Math</option>
-      <option value="Science">Science</option>
-      <option value="Filipino">Filipino</option>
-      <option value="English">English</option>
-      <option value="Social Science">Social Science</option>
-      <option value="EP.E/MAPEH">P.E/MAPEH</option>
-      <option value="ESP">ESP</option>
-      <option value="ICT">ICT</option>
-      <option value="OTHER">Other</option>
+      <option value="Arts">Fine and Applied Arts</option>
+<option value="Behavioral Science">Social and Behavioral Science</option>
+<option value="Business">Business Administration</option>
+<option value="Communication">Mass Communication and Documentation</option>
+<option value="Computer Science">Mathematics and Computer Science</option>
+<option value="Craft and Industry">Trade, Craft and Industry</option>
+<option value="Documentation">Mass Communication and Documentation</option>
+<option value="Education and Teacher Training">General Education and Teacher Training</option>
+<option value="Engineering">Engineering</option>
+<option value="English and Languages">English and Languages</option>
+<option value="Forestry, Fisheries and Veterinary Medicine">Agriculture, Forestry, Fisheries and Veterinary Medicine</option>
+<option value="General">General</option>
+<option value="Humanities">Humanities</option>
+<option value="Industry">Trade, Craft and Industry</option>
+<option value="Jurisprudence">Law and Jurisprudence</option>
+<option value="Languages">English and Languages</option>
+<option value="Law">Law and Jurisprudence</option>
+<option value="MAPEH">P.E/MAPEH</option>
+<option value="Mathematics">Mathematics</option>
+<option value="Medicine">Medicine</option>
+<option value="Natural Science">Natural Science</option>
+<option value="Panlipunan">Filipino and Araling Panlipunan</option>
+<option value="Planning">Architecture and Town Planning</option>
+<option value="Religion">Religion and Theology</option>
+<option value="Science">Science</option>
+<option value="Service Trades">Service Trades</option>
+<option value="Social Science">Social Science</option>
+<option value="Theology">Religion and Theology</option>
+<option value="Veterinary Medicine">Agriculture, Forestry, Fisheries and Veterinary Medicine</option>
+
     </select>
  </div>
  <div className="flex flex-col">
