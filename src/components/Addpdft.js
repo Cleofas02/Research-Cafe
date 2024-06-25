@@ -150,33 +150,18 @@ const handleReset = () => {
 
  // Filter pdfData based on searchQuery
  const filteredPdfData = pdfData.filter(pdf => {
+  const fields = ['name', 'researchTitle', 'authors', 'strands', 'citation', 'publicationDate', 'researchMethod'];
   const query = searchQuery.toLowerCase();
-  const name = pdf.name ? pdf.name.toLowerCase() : '';
-  const researchTitle = pdf.researchTitle ? pdf.researchTitle.toLowerCase() : '';
-  const authors = pdf.authors ? pdf.authors.toLowerCase() : '';
-  const strands = pdf.strands ? pdf.strands.toLowerCase() : '';
-  const citation = pdf.citation ? pdf.citation.toLowerCase() : '';
-  const publicationDate = pdf.publicationDate ? pdf.publicationDate.toLowerCase() : '';
-  const researchMethod = pdf.researchMethod ? pdf.researchMethod.toLowerCase() : '';
 
-  return (
-    name.includes(query) ||
-    researchTitle.includes(query) ||
-    authors.includes(query) ||
-    citation.includes(citation) ||
-    strands.includes(query) ||
-    publicationDate.includes(query) ||
-    researchMethod.includes(query)
-  );
-})
+  return fields.some(field => {
+    const fieldValue = pdf[field]? pdf[field].toLowerCase() : '';
+    return fieldValue.includes(query);
+  });
+});
+
 
 return (
     <>
-
-
-
-
-
 
 <div className="flex items-center  p-4 max-width-full ">
 
