@@ -1,8 +1,3 @@
-
----
-
-## ☕ 2. `Research-Cafe` README.md
-
 # ☕ Research Cafe
 
 A React + Firebase project developed as a final research system for research cafe. Focuses on uploading, saving the literature and acting as online library for future researchers of the school.
