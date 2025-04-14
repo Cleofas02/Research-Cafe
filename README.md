@@ -5,7 +5,7 @@
 
 # ☕ Research Cafe
 
-A React + Firebase project developed as a final research system for a cafe business simulation. Focuses on showcasing full-stack development using modern tools.
+A React + Firebase project developed as a final research system for research cafe. Focuses on uploading, saving the literature and acting as online library for future researchers of the school.
 
 ## 📌 Features
 
